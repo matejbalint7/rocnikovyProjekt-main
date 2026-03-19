@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Oběšenec - Multiplayer</title>
+
+  <!-- pripojeni css -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  
+  <h1>Oběšenec - Multiplayer</h1>
+
+  <!-- Zobrazí se informace o roli hráče (hádač nebo zadavatel) -->
+  <div id="role-info"></div>
+
+  <!-- Sekce pro zadavatele slova -->
+  <div id="set-word" style="display:none;">
+    <label>Zadej tajné slovo (bez diakritiky):</label><br />
+    <!-- Vstupní pole pro zadání slova -->
+    <input type="text" id="wordInput" autocomplete="off" />
+    <!-- Tlačítko pro odeslání slova -->
+    <button id="btnSetWord">Nastavit slovo</button>
+  </div>
+
+  <!-- Sekce pro hádajícího hráče -->
+  <div id="guess-area" style="display:none;">
+    <!-- Zobrazení aktuálního stavu hádaného slova -->
+    <p>Slovo: <span id="revealed"></span></p>
+
+    <!-- Vstupní pole pro hádání písmena -->
+    <label>Hádej písmeno:</label>
+    <input type="text" id="guessInput" maxlength="1" autocomplete="off" />
+    <button id="btnGuess">Hádej</button>
+
+    <!-- Výpis špatně typovaných písmen -->
+    <p id="wrongGuesses"></p>
+  </div>
+
+  <!-- Obrázek šibenice -->
+  <div id="hangman-container" style="text-align:center; margin-bottom: 20px;">
+    <img id="hangman-img"src="obrazky/hangman0.png" alt="Šibenice" style="max-width: 200px;" />
+  </div>
+
+  <!-- Výsledek hry (výhra/prohra) -->
+  <div id="result"></div>
+
+  <!-- Tlačítko pro restart hry, zobrazuje se až po konci kola -->
+  <button id="restartBtn" style="display: none;">🔁 Restartovat hru</button>
+
+  <!-- Připojení socket.io klientské knihovny -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- Pripojeni souboru s herni logikou -->
+  <script src="game.js"></script>
+</body>
+</html>
